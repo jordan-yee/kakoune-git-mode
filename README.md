@@ -28,23 +28,23 @@ git.kak script that ship with Kakoune, with minor enhancements.
 
 ### git mode mappings
 
-| key   | action           |
-| ----- | ---------------- |
-| s     | status           |
-| l     | log              |
-| L     | show last commit |
-| I     | init             |
-| a     | add              |
-| R     | remove           |
-| c     | commit           |
-| x     | checkout         |
-| d     | diff             |
-| D     | show diff mode*  |
-| <a-d> | show diff        |
-| n     | next hunk*       |
-| p     | previous hunk*   |
-| b     | show blame       |
-| h     | hide diff/blame  |
+| key     | action           |
+| ------- | ---------------- |
+| s       | status           |
+| l       | log              |
+| L       | show last commit |
+| I       | init             |
+| a       | add              |
+| R       | remove           |
+| c       | commit           |
+| x       | checkout         |
+| d       | diff             |
+| D       | show diff mode*  |
+| \<a-d\> | show diff        |
+| n       | next hunk*       |
+| p       | previous hunk*   |
+| b       | show blame       |
+| h       | hide diff/blame  |
 
 *These actions improve upon the corresponding, default Kakoune commands:
 - next/previous hunk mappings run `:git update-diff` before `git next/prev-hunk`,
