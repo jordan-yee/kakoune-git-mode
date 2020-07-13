@@ -1,11 +1,11 @@
 # kakoune-git-mode
 
-[kakoune](http://kakoune.org) plugin providing a custom user mode for working
-with git
+[Kakoune](http://kakoune.org) plugin providing a custom user mode for working
+with git.
 
 ## Install
 
-This plugin requires the 
+This plugin requires the git.kak tools script that ships with Kakoune.
 
 Add `git-mode.kak` to your autoload dir: `~/.config/kak/autoload/`.
 
