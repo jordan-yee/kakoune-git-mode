@@ -72,7 +72,8 @@ Example:
 
 ## License
 
-Thanks a lot to the author(s) of the Kakoune git wrapper script for providing
+- Thanks to [Mawww](https://github.com/mawww) for an awesome editor.
+- Thanks to the author(s) of the Kakoune git wrapper script for providing
 the Kakoune git commands.
 
 MIT
