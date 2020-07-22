@@ -74,6 +74,25 @@ Example:
 3. Exit show-diff mode and hide the diff indicators using the key combination,
    'h<esc>'.
 
+### Example Workflow
+
+NOTE: In steps below, KC means Key Combination.
+
+1. Make changes to code file and save them.
+2. Review changes in file.
+   1. Activate show-diff mode.
+      KC: `,gD`
+   3. Navigate between changes (git hunks).
+      KC: `j/k` or `n/p`
+   4. Hide changes and exit show-diff mode.
+      KC: `h<esc>`
+3. Stage changes.
+   KC: `,ga`
+4. Commit changes.
+   KC: `,gc`
+5. Check your repo's git status.
+   KC: `,gs`
+
 ### TODO
 
 [ ] Add option for specifying an alternate user mode key.
