@@ -42,28 +42,37 @@ define-command -hidden activate-show-diff-mode %{
     enter-user-mode -lock show-diff
     git show-diff
 }
+
 map global git D ': activate-show-diff-mode<ret>' -docstring 'show diff mode'
+map global git <a-d> ': git show-diff<ret>' -docstring 'show diff'
 
 map global show-diff h ': git hide-diff<ret>' -docstring 'hide diff'
 map global show-diff s ': git show-diff<ret>' -docstring 'show diff'
-map global show-diff p ': git prev-hunk<ret>' -docstring 'previous hunk'
-map global show-diff k ': git prev-hunk<ret>' -docstring 'previous hunk'
-map global show-diff n ': git next-hunk<ret>' -docstring 'next hunk'
-map global show-diff j ': git next-hunk<ret>' -docstring 'next hunk'
 
-map global git <a-d> ': git show-diff<ret>' -docstring 'show diff'
 
 define-command -hidden next-updated-hunk %{
     git update-diff
     git next-hunk
+    # center cursor on top so hunk is visible
+    execute-keys vt
 }
+
 map global git n ': next-updated-hunk<ret>' -docstring 'next hunk'
+
+map global show-diff n ': next-updated-hunk<ret>' -docstring 'next hunk'
+map global show-diff j ': next-updated-hunk<ret>' -docstring 'next hunk'
 
 define-command -hidden prev-updated-hunk %{
     git update-diff
     git prev-hunk
+    # center cursor on top so hunk is visible
+    execute-keys vt
 }
+
 map global git p ': prev-updated-hunk<ret>' -docstring 'previous hunk'
+
+map global show-diff p ': prev-updated-hunk<ret>' -docstring 'previous hunk'
+map global show-diff k ': prev-updated-hunk<ret>' -docstring 'previous hunk'
 
 # -----------------------------------------------------------------------------
 # Blame
