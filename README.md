@@ -21,8 +21,16 @@ This plugin adds git mode, a custom user mode mapped to `g`. If you're using
 the default user mode mapping, you can trigger git mode via the key combination,
 ',g'.
 
-git mode is largely a set of mappings providing quick keyboard shortcuts to the
-git.kak script that ship with Kakoune, with minor enhancements.
+There are many useful scripts that ship with Kakoune to provide commands for
+working with external programs such as git. It is standard convention to leave
+it to the user to create custom mappings for these commands. This plugin
+initially aims to provide a ready-to-go set of mappings for using the git
+commands that come with Kakoune.
+
+Additionally, the goal of this plugin is to streamline interaction with git
+during development so far as makes sense to do so from within Kakoune. To that
+end, git-mode mappings and other functionality will be incrementally updated to
+improve upon the behavior of the built-in git commands.
 
 ## Usage
 
@@ -46,12 +54,8 @@ git.kak script that ship with Kakoune, with minor enhancements.
 | b       | show blame       |
 | h       | hide diff/blame  |
 
-*These actions improve upon the corresponding, default Kakoune commands:
-- next/previous hunk mappings run `:git update-diff` before `git next/prev-hunk`,
-so as long as you save the file before using the mapping
-- more on show-diff mode below
-
 ### show-diff mode
+
 show-diff mode executes `git show-diff`, displaying changes in the gutter, and
 triggers a locked user-mode with mappings for navigating the hunks using either
 the standard n/p keys or j/k vi keys. This is meant to be a the primary way to
@@ -70,10 +74,14 @@ Example:
 3. Exit show-diff mode and hide the diff indicators using the key combination,
    'h<esc>'.
 
+### TODO
+
+[ ] Add option for specifying an alternate user mode key.
+[ ] Add aliases for git commands.
+[ ] Add options to enable/disable aliases and mappings.
+
 ## License
 
 - Thanks to [Mawww](https://github.com/mawww) for an awesome editor.
-- Thanks to the author(s) of the Kakoune git wrapper script for providing
-the Kakoune git commands.
 
 MIT
