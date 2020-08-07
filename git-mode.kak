@@ -53,8 +53,8 @@ map global show-diff s ': git show-diff<ret>' -docstring 'show diff'
 define-command -hidden next-updated-hunk %{
     git update-diff
     git next-hunk
-    # center cursor on top so hunk is visible
-    execute-keys vt
+    # center cursor vertically so hunk and surrounding context is visible
+    execute-keys vc
 }
 
 map global git n ': next-updated-hunk<ret>' -docstring 'next hunk'
@@ -65,8 +65,8 @@ map global show-diff j ': next-updated-hunk<ret>' -docstring 'next hunk'
 define-command -hidden prev-updated-hunk %{
     git update-diff
     git prev-hunk
-    # center cursor on top so hunk is visible
-    execute-keys vt
+    # center cursor vertically so hunk and surrounding context is visible
+    execute-keys vc
 }
 
 map global git p ': prev-updated-hunk<ret>' -docstring 'previous hunk'
@@ -84,8 +84,3 @@ define-command -hidden hide-diff-blame %{
     git hide-diff
 }
 map global git h ': hide-diff-blame<ret>' -docstring 'hide diff/blame'
-
-# -----------------------------------------------------------------------------
-# Map to User Mode key
-
-map global user g ':enter-user-mode git<ret>' -docstring 'git mode'

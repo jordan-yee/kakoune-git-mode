@@ -1,40 +1,42 @@
 # kakoune-git-mode
+[Kakoune](http://kakoune.org) plugin providing improved git interaction.
 
-[Kakoune](http://kakoune.org) plugin providing a custom user mode for working
-with git.
-
-## Install
-
+# Installation
 This plugin requires the git.kak tools script that ships with Kakoune.
 
-Add `git-mode.kak` to your autoload dir: `~/.config/kak/autoload/`.
-
-Or via [plug.kak](https://github.com/andreyorst/plug.kak):
-
+## Installing with plug.kak
+To install with [plug.kak](https://github.com/andreyorst/plug.kak), add the
+following to your kakrc, then run the `:plug-install` command:
 ```
-plug 'jordan-yee/kakoune-git-mode'
+plug 'jordan-yee/kakoune-git-mode' config %{
+    # Suggested user mode mapping
+    map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+}
 ```
 
-## Overview
+## Installing manually
+Download `git-mode.kak` and add it to your autoload dir, located at
+`~/.config/kak/autoload/` by default.
 
-This plugin adds git mode, a custom user mode mapped to `g`. If you're using
-the default user mode mapping, you can trigger git mode via the key combination,
-',g'.
+Alternatively, add `source <filepath>/git-mode.kak` to your kakrc, with
+'<filepath>' changed to wherever you like to keep your kak scripts.
 
-There are many useful scripts that ship with Kakoune to provide commands for
-working with external programs such as git. It is standard convention to leave
-it to the user to create custom mappings for these commands. This plugin
-initially aims to provide a ready-to-go set of mappings for using the git
-commands that come with Kakoune.
+Once sourced via one of methods mentioned above, optionally add a user mode
+mapping to your kakrc to trigger git mode:
+```
+# Suggested user mode mapping
+map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+```
 
-Additionally, the goal of this plugin is to streamline interaction with git
-during development so far as makes sense to do so from within Kakoune. To that
-end, git-mode mappings and other functionality will be incrementally updated to
-improve upon the behavior of the built-in git commands.
+# Usage
+The suggested user mode binding for activating git mode is:
+```
+map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+```
+The assigned mappings for repl mode were chosen to be mechanically fluid when
+used with this suggested leader key.
 
-## Usage
-
-### git mode mappings
+## git mode mappings
 
 | key     | action           |
 | ------- | ---------------- |
@@ -54,8 +56,7 @@ improve upon the behavior of the built-in git commands.
 | b       | show blame       |
 | h       | hide diff/blame  |
 
-### show-diff mode
-
+## show-diff mode mappings
 show-diff mode executes `git show-diff`, displaying changes in the gutter, and
 triggers a locked user-mode with mappings for navigating the hunks using either
 the standard n/p keys or j/k vi keys. This is meant to be a the primary way to
@@ -74,8 +75,7 @@ Example:
 3. Exit show-diff mode and hide the diff indicators using the key combination,
    'h<esc>'.
 
-### Example Workflow
-
+## Example Workflow
 NOTE: In steps below, KC means Key Combination.
 
 1. Make changes to code file and save them.
@@ -93,8 +93,10 @@ NOTE: In steps below, KC means Key Combination.
 5. Check your repo's git status.
    KC: `,gs`
 
-### TODO
+# Design Notes
+This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
 
-- [ ] Add option for specifying an alternate user mode key.
+# TODO
+- [ ] When navigating between hunks, move then to the center of the screen instead of top.
 - [ ] Add aliases for git commands.
 - [ ] Add options to enable/disable aliases and mappings.
