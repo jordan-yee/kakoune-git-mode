@@ -95,12 +95,6 @@ NOTE: In steps below, KC means Key Combination.
 
 ### TODO
 
-[ ] Add option for specifying an alternate user mode key.
-[ ] Add aliases for git commands.
-[ ] Add options to enable/disable aliases and mappings.
-
-## License
-
-- Thanks to [Mawww](https://github.com/mawww) for an awesome editor.
-
-MIT
+- [ ] Add option for specifying an alternate user mode key.
+- [ ] Add aliases for git commands.
+- [ ] Add options to enable/disable aliases and mappings.
