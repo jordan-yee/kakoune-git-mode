@@ -134,13 +134,13 @@ map global git x ': git-mode-checkout<ret>' -docstring 'checkout'
 map global git D ': git-mode-diff<ret>' -docstring 'diff'
 map global git d ': git-mode-show-diff<ret>' -docstring 'show diff'
 map global git u ': git-mode-update-diff<ret>' -docstring 'update diff'
-map global git h ': git-mode-hide<ret>' -docstring 'hide diff/blame'
 map global git j ': git-mode-next-hunk<ret>' -docstring 'next hunk'
 map global git n ': git-mode-next-hunk<ret>' -docstring 'next hunk'
 map global git k ': git-mode-prev-hunk<ret>' -docstring 'previous hunk'
 map global git p ': git-mode-prev-hunk<ret>' -docstring 'previous hunk'
 map global git N ': git-mode-navigate-hunks<ret>' -docstring 'lock hunk navigation'
 map global git b ': git blame<ret>' -docstring 'show blame'
+map global git h ': git-mode-hide<ret>' -docstring 'hide diff/blame'
 
 # ------------------------------------------------------------------------------
 # hunk-nav mode
