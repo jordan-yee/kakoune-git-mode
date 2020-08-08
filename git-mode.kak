@@ -129,7 +129,7 @@ map global git a ': git-mode-add<ret>' -docstring 'add'
 # capital R is used since this is a destructive operation
 map global git R ': git-mode-rm<ret>' -docstring 'remove'
 map global git c ': git-mode-commit<ret>' -docstring 'commit'
-map global git m ': git-mode-commit-message<ret>' -docstring 'quick commit (message)'
+map global git m ': git-mode-commit-message<ret>' -docstring 'quick commit'
 map global git x ': git-mode-checkout<ret>' -docstring 'checkout'
 map global git D ': git-mode-diff<ret>' -docstring 'diff'
 map global git d ': git-mode-show-diff<ret>' -docstring 'show diff'
