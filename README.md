@@ -38,58 +38,51 @@ used with this suggested leader key.
 
 ## git mode mappings
 
-| key     | action           |
-| ------- | ---------------- |
-| s       | status           |
-| l       | log              |
-| L       | show last commit |
-| I       | init             |
-| a       | add              |
-| R       | remove           |
-| c       | commit           |
-| x       | checkout         |
-| d       | diff             |
-| D       | show diff mode*  |
-| \<a-d\> | show diff        |
-| n       | next hunk*       |
-| p       | previous hunk*   |
-| b       | show blame       |
-| h       | hide diff/blame  |
+| key     | action                            |
+| ------- | --------------------------------- |
+| s       | status                            |
+| l       | log                               |
+| L       | show last commit                  |
+| I       | init                              |
+| a       | add                               |
+| R       | remove                            |
+| c       | commit                            |
+| m       | quick commit (prompt for message) |
+| x       | checkout                          |
+| D       | diff                              |
+| d       | show diff                         |
+| u       | update diff                       |
+| j,n     | next hunk*                        |
+| k,p     | previous hunk*                    |
+| N       | lock hunk navigation              |
+| b       | show blame                        |
+| h       | hide diff/blame                   |
 
-## show-diff mode mappings
-show-diff mode executes `git show-diff`, displaying changes in the gutter, and
-triggers a locked user-mode with mappings for navigating the hunks using either
-the standard n/p keys or j/k vi keys. This is meant to be a the primary way to
-check what's changed in a file you're working on.
+## hunk-nav mode mappings
+hunk-nav mode displays changes in the gutter, and triggers a locked user-mode
+with mappings for navigating the hunks using either the n/p or j/k keys. This
+mode is activated with the <N> key.
 
 | key | action        |
 | --- | ------------- |
-| h   | hide diff     |
-| s   | show diff     |
-| p,k | previous hunk |
-| n,j | nexk hunk     |
-
-Example:
-1. Start show-diff mode with the key combination, ',gD'.
-2. Navigate through the now-visible hunks using n/p or j/k.
-3. Exit show-diff mode and hide the diff indicators using the key combination,
-   'h<esc>'.
+| j,n | nexk hunk     |
+| k,p | previous hunk |
 
 ## Example Workflow
 NOTE: In steps below, KC means Key Combination.
 
 1. Make changes to code file and save them.
 2. Review changes in file.
-   1. Activate show-diff mode.
-      KC: `,gD`
+   1. Activate hunk-nav mode.
+      KC: `,gN`
    3. Navigate between changes (git hunks).
       KC: `j/k` or `n/p`
-   4. Hide changes and exit show-diff mode.
-      KC: `h<esc>`
+   4. Exit hunk-nav mode.
+      KC: `<esc>`
 3. Stage changes.
    KC: `,ga`
 4. Commit changes.
-   KC: `,gc`
+   KC: `,gc`, enter message then save `:w`
 5. Check your repo's git status.
    KC: `,gs`
 
@@ -97,6 +90,6 @@ NOTE: In steps below, KC means Key Combination.
 This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
 
 # TODO
-- [ ] When navigating between hunks, move then to the center of the screen instead of top.
 - [ ] Add aliases for git commands.
-- [ ] Add options to enable/disable aliases and mappings.
+- [ ] Add options to enable/disable aliases and/or mappings.
+- [ ] Add option to trigger update-diff via save hook or manually (for performance).
