@@ -16,7 +16,7 @@ declare-user-mode git
 #       - Docstrings for mappings vs commands should differ when the mapping
 #         assumes arguments to an associated command.
 provide-module git-mode %{
-    
+
     define-command -docstring "status" \
     git-mode-status %{
         git status
@@ -70,7 +70,7 @@ provide-module git-mode %{
     git-mode-diff %{
         git diff
     }
-    
+
     define-command -docstring "show diff" \
     git-mode-show-diff %{
         git show-diff
