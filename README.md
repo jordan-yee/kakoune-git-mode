@@ -9,6 +9,14 @@ To install with [plug.kak](https://github.com/andreyorst/plug.kak), add the
 following to your kakrc, then run the `:plug-install` command:
 ```
 plug 'jordan-yee/kakoune-git-mode' config %{
+    # Set structured commit message options here
+    # set-option global git_mode_use_structured_quick_commit true
+    # set-option git_mode_commit_prefixes 'feat::fix::docs::refactor::build::test::style::BREAKING CHANGE::'
+    # set-option git_mode_branch_label_regex 'SCRUM-[0-9]+'
+
+    # Declare git mode with default set of mappings
+    declare-git-mode
+
     # Suggested user mode mapping
     map global user g ': enter-user-mode git<ret>' -docstring "git mode"
 }
@@ -28,6 +36,15 @@ mapping to your kakrc to trigger git mode:
 map global user g ': enter-user-mode git<ret>' -docstring "git mode"
 ```
 
+# Options
+Options are provided for customizing tab-complete for a structured commit message.
+
+| option                                 | type | example value       |
+| -------------------------------------- | ---- | ------------------- |
+| `git_mode_use_structured_quick_commit` | bool | true                |
+| `git_mode_commit_prefixes`             | str  | 'feat::fix::docs::' |
+| `git_mode_branch_label_regex`          | str  | 'SCRUM-[0-9]+'      |
+
 # Usage
 The suggested user mode binding for activating git mode is:
 ```
@@ -36,7 +53,9 @@ map global user g ': enter-user-mode git<ret>' -docstring "git mode"
 The assigned mappings for repl mode were chosen to be mechanically fluid when
 used with this suggested leader key.
 
-## git mode mappings
+## Default 'git' user-mode mappings
+Most of these actions map directly to the stock `git` commands that ship with
+Kakoune. Any differences are detailed in a subsequent section.
 
 | key     | action                            |
 | ------- | --------------------------------- |
@@ -58,17 +77,17 @@ used with this suggested leader key.
 | b       | show blame                        |
 | h       | hide diff/blame                   |
 
-## hunk-nav mode mappings
-hunk-nav mode displays changes in the gutter, and triggers a locked user-mode
-with mappings for navigating the hunks using either the n/p or j/k keys. This
-mode is activated with the <N> key.
+## Default 'hunk-nav' user-mode mappings
+The 'hunk-nav' user-mode displays changes in the gutter, and triggers a locked
+user-mode with mappings for navigating the hunks using either the n/p or j/k keys.
+This user-mode is activated with the <N> key via the default 'git' user-mode.
 
 | key | action        |
 | --- | ------------- |
 | j,n | nexk hunk     |
 | k,p | previous hunk |
 
-## Example Workflow
+# Example Workflow
 NOTE: In steps below, KC means Key Combination.
 
 1. Make changes to code file and save them.
@@ -85,6 +104,34 @@ NOTE: In steps below, KC means Key Combination.
    KC: `,gc`, enter message then save `:w`
 5. Check your repo's git status.
    KC: `,gs`
+
+# Differences to stock git commands
+The following features are unique to this plugin--as opposed to those provided
+by the git commands that ship with Kakoune.
+
+**Quick Commit**
+- When triggered a prompt is shown to enter a commit message
+  (instead of switching to the commit message buffer)
+- If the prompt is aborted, you are given the option to switch to the commit
+  buffer to continue editing the message or cancel entirely.
+  - While I've found the quick commit prompt to be more convenient most of the
+    time, I would frequently realize I wanted to add additional details to the
+    commit message body--which can only be done on the commit message buffer--
+    after already having written a summary at the quick commit prompt.
+  - This feature means you don't have to start over with your message if faced
+    with this situation. Just press `<esc>, e` to continue editing in the
+    dedicated buffer.
+
+**Structured Commit Message**
+- When enabled, the quick commit prompt provides tab-completion for a
+  structured commit message (e.g. Conventional Commits).
+- This uses a configurable list of commit prefix keywords (e.g. 'feat', 'docs',
+  'fix', etc.), plus a regex string to match a label in the current branch name.
+- Example structured commit message flow:
+  - Activate the quick commit prompt
+  - Start typing the keyword 'fe'
+  - Tab complete the keyword plus a label derived from the current branch:
+    `feat: (SCRUM-1234) <your cursor is here>`
 
 # Design Notes
 This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
