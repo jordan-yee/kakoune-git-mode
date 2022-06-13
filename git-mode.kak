@@ -102,7 +102,7 @@ provide-module git-mode %{
         set-register c %val{text}
         hook -once -group prefill global WinDisplay .* %{
             evaluate-commands %sh{
-                printf "%s\n" "execute-keys i${kak_reg_c}"
+                printf "%s\n" 'execute-keys \"cP'
             }
         }
 
