@@ -4,15 +4,6 @@
 Mainly, this plugin provides a pre-configured set of mappings for the built-in
 `:git` commands, with some extended functionaly, outlined below.
 
-# Options
-Options are provided for customizing tab-complete for a structured commit message.
-
-| option                                 | type | example value       |
-| -------------------------------------- | ---- | ------------------- |
-| `git_mode_use_structured_quick_commit` | bool | true                |
-| `git_mode_commit_prefixes`             | str  | 'feat::fix::docs::' |
-| `git_mode_branch_label_regex`          | str  | 'SCRUM-[0-9]+'      |
-
 # Usage
 The suggested user mode binding for activating git mode is:
 ```
@@ -136,6 +127,15 @@ map global user g ': enter-user-mode git<ret>' -docstring "git mode"
 
 # See also the configuration options shown in the plug.kak instructions, above.
 ```
+
+# Options
+Options are provided to customize tab-complete for a structured commit message.
+
+| option                                 | type | example value       |
+| -------------------------------------- | ---- | ------------------- |
+| `git_mode_use_structured_quick_commit` | bool | true                |
+| `git_mode_commit_prefixes`             | str  | 'feat::fix::docs::' |
+| `git_mode_branch_label_regex`          | str  | 'SCRUM-[0-9]+'      |
 
 # Design Notes
 This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
