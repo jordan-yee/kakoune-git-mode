@@ -4,6 +4,9 @@
 Mainly, this plugin provides a pre-configured set of mappings for the built-in
 `:git` commands, with some extended functionaly, outlined below.
 
+**TODO:**
+- [ ] Show info box with files included in commit during the quick-commit prompt
+
 # Usage
 The suggested user mode binding for activating git mode is:
 ```
