@@ -54,7 +54,9 @@ This user-mode is activated with the <N> key via the default 'git' user-mode.
    3. Navigate between changes (git hunks): `j/k` or `n/p`
    4. Exit hunk-nav mode: `<esc>`
 3. Stage changes: `<space>ga`
-4. Commit changes: `<space>gc`<space> enter message then save `:w`
+4. Commit changes with quick-commit:
+   - `<space>gm`
+   - Enter commit message at the prompt, then press enter to save the commit
 5. Check your repo's git status: `<space>gs`
 
 # Differences to stock git commands
