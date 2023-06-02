@@ -4,44 +4,6 @@
 Mainly, this plugin provides a pre-configured set of mappings for the built-in
 `:git` commands, with some extended functionaly, outlined below.
 
-# Installation
-This plugin requires the git.kak tools script that ships with Kakoune.
-
-## Installing with plug.kak
-To install with [plug.kak](https://github.com/andreyorst/plug.kak), add the
-following to your kakrc, then run the `:plug-install` command:
-```
-plug 'jordan-yee/kakoune-git-mode' config %{
-    # Set structured commit message options here
-    # set-option global git_mode_use_structured_quick_commit true
-    # set-option git_mode_commit_prefixes 'feat::fix::docs::refactor::build::test::style::BREAKING CHANGE::'
-    # set-option git_mode_branch_label_regex 'SCRUM-[0-9]+'
-
-    # Declare git mode with default set of mappings
-    declare-git-mode
-
-    # Suggested user mode mapping
-    map global user g ': enter-user-mode git<ret>' -docstring "git mode"
-
-    # I find this quite nice to open the lazygit client.
-    map global git o ': tmux-terminal-window lazygit<ret>' -docstring "open lazygit in new window"
-}
-```
-
-## Installing manually
-Download `git-mode.kak` and add it to your autoload dir, located at
-`~/.config/kak/autoload/` by default.
-
-Alternatively, add `source <filepath>/git-mode.kak` to your kakrc, with
-'<filepath>' changed to wherever you like to keep your kak scripts.
-
-Once sourced via one of methods mentioned above, optionally add a user mode
-mapping to your kakrc to trigger git mode:
-```
-# Suggested user mode mapping
-map global user g ': enter-user-mode git<ret>' -docstring "git mode"
-```
-
 # Options
 Options are provided for customizing tab-complete for a structured commit message.
 
@@ -132,9 +94,48 @@ by the git commands that ship with Kakoune.
   - Tab complete the keyword plus a label derived from the current branch:
     `feat: (SCRUM-1234) <your cursor is here>`
 
+# Installation
+This plugin requires the git.kak tools script that ships with Kakoune.
+
+## Installing with plug.kak
+To install with [plug.kak](https://github.com/andreyorst/plug.kak), add the
+following to your kakrc, then run the `:plug-install` command:
+```
+plug 'jordan-yee/kakoune-git-mode' config %{
+    # Set structured commit message options here
+    # set-option global git_mode_use_structured_quick_commit true
+    # set-option git_mode_commit_prefixes 'feat::fix::docs::refactor::build::test::style::BREAKING CHANGE::'
+    # set-option git_mode_branch_label_regex 'SCRUM-[0-9]+'
+
+    # Declare git mode with default set of mappings
+    declare-git-mode
+
+    # Suggested user mode mapping
+    map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+
+    # I find this quite nice to open the lazygit client.
+    map global git o ': tmux-terminal-window lazygit<ret>' -docstring "open lazygit in new window"
+}
+```
+
+## Installing manually
+Download `git-mode.kak` and add it to your autoload dir, located at
+`~/.config/kak/autoload/` by default.
+
+Alternatively, add `source <filepath>/git-mode.kak` to your kakrc, with
+'<filepath>' changed to wherever you like to keep your kak scripts.
+
+Once sourced via one of methods mentioned above, optionally add a user mode
+mapping to your kakrc to trigger git mode:
+```
+# Declare git mode with default set of mappings
+declare-git-mode
+
+# Suggested user mode mapping
+map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+
+# See also the configuration options shown in the plug.kak instructions, above.
+```
+
 # Design Notes
 This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
-
-# TODO
-- [ ] Add option to trigger update-diff via save hook or manually (for performance).
-- [ ] Open a preferred Git client (lazygit) in a new window for more advanced functionality.
