@@ -1,5 +1,8 @@
 # kakoune-git-mode
-[Kakoune](http://kakoune.org) plugin providing improved git interaction.
+[Kakoune](http://kakoune.org) plugin providing improved Git interaction.
+
+Mainly, this plugin provides a pre-configured set of mappings for the built-in
+`:git` commands, with some extended functionaly, outlined below.
 
 # Installation
 This plugin requires the git.kak tools script that ships with Kakoune.
@@ -19,6 +22,9 @@ plug 'jordan-yee/kakoune-git-mode' config %{
 
     # Suggested user mode mapping
     map global user g ': enter-user-mode git<ret>' -docstring "git mode"
+
+    # I find this quite nice to open the lazygit client.
+    map global git o ': tmux-terminal-window lazygit<ret>' -docstring "open lazygit in new window"
 }
 ```
 
@@ -84,26 +90,19 @@ This user-mode is activated with the <N> key via the default 'git' user-mode.
 
 | key | action        |
 | --- | ------------- |
-| j,n | nexk hunk     |
+| j,n | next hunk     |
 | k,p | previous hunk |
 
 # Example Workflow
-NOTE: In steps below, KC means Key Combination.
 
-1. Make changes to code file and save them.
+1. Make changes to a code file and save them.
 2. Review changes in file.
-   1. Activate hunk-nav mode.
-      KC: `,gN`
-   3. Navigate between changes (git hunks).
-      KC: `j/k` or `n/p`
-   4. Exit hunk-nav mode.
-      KC: `<esc>`
-3. Stage changes.
-   KC: `,ga`
-4. Commit changes.
-   KC: `,gc`, enter message then save `:w`
-5. Check your repo's git status.
-   KC: `,gs`
+   1. Activate hunk-nav mode: `<space>gN`
+   3. Navigate between changes (git hunks): `j/k` or `n/p`
+   4. Exit hunk-nav mode: `<esc>`
+3. Stage changes: `<space>ga`
+4. Commit changes: `<space>gc`<space> enter message then save `:w`
+5. Check your repo's git status: `<space>gs`
 
 # Differences to stock git commands
 The following features are unique to this plugin--as opposed to those provided
@@ -116,10 +115,10 @@ by the git commands that ship with Kakoune.
   buffer to continue editing the message or cancel entirely.
   - While I've found the quick commit prompt to be more convenient most of the
     time, I would frequently realize I wanted to add additional details to the
-    commit message body--which can only be done on the commit message buffer--
+    commit message body (which can only be done on the commit message buffer)
     after already having written a summary at the quick commit prompt.
   - This feature means you don't have to start over with your message if faced
-    with this situation. Just press `<esc>, e` to continue editing in the
+    with this situation. Just press `<esc>e` to continue editing in the
     dedicated buffer.
 
 **Structured Commit Message**
@@ -137,6 +136,5 @@ by the git commands that ship with Kakoune.
 This plugin was written with [these principles](https://github.com/jordan-yee/principles/blob/master/kakoune-plugins.md) in mind.
 
 # TODO
-- [ ] Add aliases for git commands.
-- [ ] Add options to enable/disable aliases and/or mappings.
 - [ ] Add option to trigger update-diff via save hook or manually (for performance).
+- [ ] Open a preferred Git client (lazygit) in a new window for more advanced functionality.
