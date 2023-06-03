@@ -15,7 +15,7 @@ map global user g ': enter-user-mode git<ret>' -docstring "git mode"
 The assigned mappings for repl mode were chosen to be mechanically fluid when
 used with this suggested leader key.
 
-## Default 'git' user-mode mappings
+## Provided 'git' mode mappings
 Most of these actions map directly to the stock `git` commands that ship with
 Kakoune. Any differences are detailed in a subsequent section.
 
@@ -39,7 +39,7 @@ Kakoune. Any differences are detailed in a subsequent section.
 | b       | show blame                        |
 | h       | hide diff/blame                   |
 
-## Default 'hunk-nav' user-mode mappings
+## Provided 'hunk-nav' mode mappings
 The 'hunk-nav' user-mode displays changes in the gutter, and triggers a locked
 user-mode with mappings for navigating the hunks using either the n/p or j/k keys.
 This user-mode is activated with the <N> key via the default 'git' user-mode.
